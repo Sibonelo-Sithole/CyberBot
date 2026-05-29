@@ -26,24 +26,25 @@
             Margin="0,20,0,0"/>
 
             <!-- CHAT DISPLAY -->
-            <TextBox
-            x:Name="chatBox"
-            Margin="20,80,20,120"
-            Background="#2D2D30"
-            Foreground="White"
-            FontSize="14"
-            TextWrapping="Wrap"
-            VerticalScrollBarVisibility="Auto"
-            IsReadOnly="True"/>
+            <RichTextBox
+                x:Name="chatBox"
+                Margin="20,80,20,120"
+                Background="#2D2D30"
+                FontSize="14"
+                VerticalScrollBarVisibility="Auto"
+                IsReadOnly="True"
+                BorderThickness="0"/>
 
             <!-- INPUT BOX -->
+           
             <TextBox
-            x:Name="inputBox"
-            Height="40"
-            Margin="20,0,140,30"
-            VerticalAlignment="Bottom"
-            FontSize="16"
-            Padding="8"/>
+                x:Name="inputBox"
+                Height="40"
+                Margin="20,0,140,30"
+                VerticalAlignment="Bottom"
+                FontSize="16"
+                Padding="8"
+                KeyDown="inputBox_KeyDown"/>
 
             <!-- SEND BUTTON -->
             <Button
