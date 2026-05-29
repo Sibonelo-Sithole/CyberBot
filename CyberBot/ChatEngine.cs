@@ -15,6 +15,7 @@ namespace CyberBot
 
         private string userName = "";
         private string interest = "";
+        private string lastTopic = "";
 
         // keyword response lists
 
@@ -60,7 +61,7 @@ namespace CyberBot
         {
             input = input.ToLower();
 
-            // ---------------- MEMORY: NAME ----------------
+            // memory: name
             if (input.Contains("my name is"))
             {
                 userName = input.Replace("my name is", "").Trim();
@@ -75,35 +76,63 @@ namespace CyberBot
                     return "I don’t know your name yet. Please tell me your name.";
             }
 
-            // ---------------- MEMORY: INTEREST ----------------
+            // memory: interest
             if (input.Contains("i like"))
             {
                 interest = input.Replace("i like", "").Trim();
                 return "Got it! I will remember that you are interested in " + interest + ".";
             }
 
-            // password keywords
+            if (input.Contains("what do i like") || input.Contains("what am i interested in"))
+            {
+                if (interest != "")
+                    return "You are interested in " + interest + ".";
+                else
+                    return "I don’t know yet. Tell me what you like by saying 'I like ...'.";
+            }
+
+            // topic-based responses with contextual follow-up
+
             if (input.Contains("password") || input.Contains("login") || input.Contains("pass"))
             {
+                lastTopic = "password";
                 return "🔐 Password Tip: " + GetRandom(passwordTips);
             }
 
-            // scam keywords
             if (input.Contains("scam") || input.Contains("fraud") || input.Contains("fake"))
             {
+                lastTopic = "scam";
                 return "⚠️ Scam Tip: " + GetRandom(scamTips);
             }
 
-            // phishing keywords
             if (input.Contains("phishing") || input.Contains("email") || input.Contains("link"))
             {
+                lastTopic = "phishing";
                 return "🎣 Phishing Tip: " + GetRandom(phishingTips);
             }
 
-            // privacy keywords
             if (input.Contains("privacy") || input.Contains("data") || input.Contains("personal info"))
             {
+                lastTopic = "privacy";
                 return "🔒 Privacy Tip: " + GetRandom(privacyTips);
+            }
+
+            //contextual follow-up for more advice on the last topic
+            if (input.Contains("tell me more") || input.Contains("explain more") || input.Contains("more"))
+            {
+                if (lastTopic == "password")
+                    return "🔐 More Password Advice: " + GetRandom(passwordTips);
+
+                if (lastTopic == "scam")
+                    return "⚠️ More Scam Advice: " + GetRandom(scamTips);
+
+                if (lastTopic == "phishing")
+                    return "🎣 More Phishing Advice: " + GetRandom(phishingTips);
+
+                if (lastTopic == "privacy")
+                    return "🔒 More Privacy Advice: " + GetRandom(privacyTips);
+
+                return "Please ask me about a topic first like password, scam, phishing or privacy.";
             }
 
             // personalised fallback (memory usage)
