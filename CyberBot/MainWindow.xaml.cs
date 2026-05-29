@@ -19,7 +19,7 @@ namespace CyberBot
         public MainWindow()
         {
             InitializeComponent();
-            new SoundGreet() { };
+            new SoundGreet();
         }
 
         private void submit_name(object sender, RoutedEventArgs e)
