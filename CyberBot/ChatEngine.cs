@@ -18,7 +18,8 @@ namespace CyberBot
             "Use strong passwords with letters, numbers and symbols.",
             "Never reuse the same password across different accounts.",
             "Avoid using personal information like your name or birthdate.",
-            "Consider using a password manager for safety."
+            "Consider using a password manager for safety.",
+            "Enable two-factor authentication where possible."
         };
 
         private List<string> scamTips = new List<string>()
@@ -26,7 +27,8 @@ namespace CyberBot
             "Be careful of messages asking for urgent action or money.",
             "Scammers often pretend to be trusted companies.",
             "Do not click unknown or suspicious links.",
-            "If it feels too good to be true, it probably is."
+            "If it feels too good to be true, it probably is.",
+            "Always verify requests before sharing any personal details."
         };
 
         private List<string> phishingTips = new List<string>()
@@ -34,7 +36,8 @@ namespace CyberBot
             "Always check email addresses carefully before clicking links.",
             "Phishing emails often try to create urgency.",
             "Never enter passwords on unknown websites.",
-            "Look for spelling mistakes or unusual domains."
+            "Look for spelling mistakes or unusual domains.",
+            "Be cautious of emails asking you to 'verify' your account."
         };
 
         private List<string> privacyTips = new List<string>()
@@ -42,7 +45,8 @@ namespace CyberBot
             "Review your privacy settings regularly.",
             "Do not share too much personal information online.",
             "Only accept requests from people you trust.",
-            "Limit app permissions on your devices."
+            "Limit app permissions on your devices.",
+            "Be careful what you post on social media."
         };
 
         //main method to process user input and generate responses
