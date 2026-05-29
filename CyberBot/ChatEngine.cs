@@ -61,6 +61,28 @@ namespace CyberBot
         {
             input = input.ToLower();
 
+            // ---------------- SENTIMENT DETECTION ----------------
+
+            if (input.Contains("worried") || input.Contains("scared") || input.Contains("anxious"))
+            {
+                return "It's okay to feel that way. Cybersecurity can be confusing, but I will help you stay safe.\n🔐 " + GetRandom(passwordTips);
+            }
+
+            if (input.Contains("confused") || input.Contains("lost") || input.Contains("dont understand"))
+            {
+                return "No worries, I will explain it simply. Try asking about passwords, scams, phishing or privacy.";
+            }
+
+            if (input.Contains("frustrated") || input.Contains("angry") || input.Contains("annoyed"))
+            {
+                return "I understand your frustration. Let’s take it step by step and keep it simple.";
+            }
+
+            if (input.Contains("curious") || input.Contains("interested"))
+            {
+                return "Great! Curiosity helps keep you safe online. What would you like to learn about?";
+            }
+
             // memory: name
             if (input.Contains("my name is"))
             {
