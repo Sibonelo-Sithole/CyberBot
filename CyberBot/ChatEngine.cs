@@ -11,6 +11,11 @@ namespace CyberBot
     {
         private Random random = new Random();
 
+        // memory variables
+
+        private string userName = "";
+        private string interest = "";
+
         // keyword response lists
 
         private List<string> passwordTips = new List<string>()
@@ -55,6 +60,28 @@ namespace CyberBot
         {
             input = input.ToLower();
 
+            // ---------------- MEMORY: NAME ----------------
+            if (input.Contains("my name is"))
+            {
+                userName = input.Replace("my name is", "").Trim();
+                return "Nice to meet you " + userName + "! I will remember your name.";
+            }
+
+            if (input.Contains("who am i"))
+            {
+                if (userName != "")
+                    return "You are " + userName + ". Stay safe online!";
+                else
+                    return "I don’t know your name yet. Please tell me your name.";
+            }
+
+            // ---------------- MEMORY: INTEREST ----------------
+            if (input.Contains("i like"))
+            {
+                interest = input.Replace("i like", "").Trim();
+                return "Got it! I will remember that you are interested in " + interest + ".";
+            }
+
             // password keywords
             if (input.Contains("password") || input.Contains("login") || input.Contains("pass"))
             {
@@ -77,6 +104,12 @@ namespace CyberBot
             if (input.Contains("privacy") || input.Contains("data") || input.Contains("personal info"))
             {
                 return "🔒 Privacy Tip: " + GetRandom(privacyTips);
+            }
+
+            // personalised fallback (memory usage)
+            if (userName != "")
+            {
+                return "I’m not sure about that " + userName + ". Try asking about passwords, scams, phishing or privacy.";
             }
 
             return "I’m not sure I understand. Try asking about passwords, scams, phishing or privacy.";
